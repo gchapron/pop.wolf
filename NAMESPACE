@@ -1,0 +1,11 @@
+exportPattern("^[[:alpha:]]+")
+useDynLib(pop.wolf, C_montecarlo)
+
+import(
+  parallel,
+  abind
+)
+
+importFrom("grDevices", "colorRampPalette")
+importFrom("graphics", "axis", "lines", "plot", "points", "polygon", "abline")
+importFrom("stats", "median", "quantile")
