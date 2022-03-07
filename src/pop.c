@@ -1,6 +1,6 @@
 /* pop.c
  *
- * Copyright (C) 2011, 2012, 2013, 2014, 2015, 2016 Guillaume Chapron.
+ * Copyright (C) 2011-2022 Guillaume Chapron.
  * guillaume.chapron@slu.se
  * with contributions from Camilla Wikenros, Olof Liberg, Øystein Flagstad,
  * Cyril Milleret, Johan Månsson, Linn Svensson, Barbara Zimmermann,
@@ -32,6 +32,7 @@
 #include <Rmath.h>
 
 #include "pop.h"
+#include "globals.h"
 
 #define PUP 0
 #define SUBADULT 1

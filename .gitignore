@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.Rbuildignore
+.DS_Store
+.RData
+.Ruserdata
+src/*.o
+src/*.so
+src/*.dll
+src/*.xcodeproj/

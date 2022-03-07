@@ -1,6 +1,6 @@
 /* mc.h
  *
- * Copyright (C) 2011, 2012, 2013, 2014, 2015, 2016 Guillaume Chapron.
+ * Copyright (C) 2011-2022 Guillaume Chapron.
  * guillaume.chapron@slu.se
  * with contributions from Camilla Wikenros, Olof Liberg, Øystein Flagstad,
  * Cyril Milleret, Johan Månsson, Linn Svensson, Barbara Zimmermann,
@@ -27,11 +27,6 @@
 
 #include "pop.h"
 #include "tools.h"
-
-long R_number_of_years;
-long R_number_mc_runs;
-
-long number_of_months;
 
 void mc_allocate_statistics(struct statistics *stats);
 void mc_free_results(struct statistics *stats);

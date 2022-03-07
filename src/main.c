@@ -1,6 +1,6 @@
 /* main.c
  *
- * Copyright (C) 2011, 2012, 2013, 2014, 2015, 2016 Guillaume Chapron.
+ * Copyright (C) 2011-2022 Guillaume Chapron.
  * guillaume.chapron@slu.se
  * with contributions from Camilla Wikenros, Olof Liberg, Øystein Flagstad,
  * Cyril Milleret, Johan Månsson, Linn Svensson, Barbara Zimmermann,
@@ -34,8 +34,12 @@
 #include <Rmath.h>
 
 #include "mc.h"
-#include "pop.h"
 #include "tools.h"
+#include "pop.h"
+
+#define extern
+# include "globals.h"
+#undef extern
 
 /*******************************************************************************
  Simple Monte Carlo
@@ -66,7 +70,7 @@ SEXP C_montecarlo (
 	number_of_months = 12*R_number_of_years;
 	number_of_months++;
 
-	R_survival_av_PUP = REAL(SEXP_pp_surviving)[0];
+    R_survival_av_PUP = REAL(SEXP_pp_surviving)[0];
 	R_survival_av_SUBADULT = REAL(SEXP_sb_surviving)[0];
 	R_survival_av_VAGRANT = REAL(SEXP_vg_surviving)[0];
 	R_survival_av_ALPHA = REAL(SEXP_ad_surviving)[0];

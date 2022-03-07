@@ -1,6 +1,6 @@
 /* tools.h
  *
- * Copyright (C) 2011, 2012, 2013, 2014, 2015, 2016 Guillaume Chapron.
+ * Copyright (C) 2011-2022 Guillaume Chapron.
  * guillaume.chapron@slu.se
  * with contributions from Camilla Wikenros, Olof Liberg, Øystein Flagstad,
  * Cyril Milleret, Johan Månsson, Linn Svensson, Barbara Zimmermann,
@@ -33,8 +33,6 @@ struct statistics {
 	double **individuals;
 	double **posteriors;
 };
-
-struct statistics *stats;
 
 double beta_shape(double mu, double sigma);
 double beta_rate(double mu, double sigma);
