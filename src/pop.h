@@ -52,7 +52,7 @@ int R_initial_pack_number;
 int R_initial_vagrant_number;
 int **R_initial_population;
 
-double R_survival_av_PUP;
+extern double R_survival_av_PUP;
 double R_survival_av_SUBADULT;
 double R_survival_av_VAGRANT;
 double R_survival_av_ALPHA;
@@ -115,10 +115,10 @@ struct t_population {
 	int number_indiv_history;
 	int number_packs;
 	double **history_indiv;
-	
+
 	t_individual *all_indiv;
 	t_pack *all_packs;
-    
+
 	double survival[4];
 	double litter_size;
 	double dispersing_weib_shape;

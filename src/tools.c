@@ -35,31 +35,31 @@
  *******************************************************************************/
 
 GPtrArray* g_ptr_array_sized_new(int reserved_size) {
-	
+
 	GPtrArray *array = malloc(sizeof(GPtrArray));
-    
+
 	if (reserved_size > 0) {
-		
+
 		array->pdata = malloc(reserved_size * sizeof(gpointer));
-		
+
 		for (int i = 0; i < reserved_size; i++) {
-			
+
 			array->pdata[i] = NULL;
-			
+
 		}
-		
+
 	} else {
-		
+
 		array->pdata = NULL;
-		
+
 	}
-    
+
     array->len = 0;
-	
+
 	array->alloc = reserved_size;
-	
+
 	return (GPtrArray*) array;
-    
+
 }
 
 /*******************************************************************************
@@ -67,25 +67,25 @@ GPtrArray* g_ptr_array_sized_new(int reserved_size) {
  *******************************************************************************/
 
 void g_ptr_array_add (GPtrArray *array, gpointer data) {
-	
+
 	if (array->len == array->alloc) {
-		
+
 		array->pdata = realloc(array->pdata, 2*array->alloc*sizeof(gpointer));
-		
+
         for (int i = array->alloc; i < 2*array->alloc; i++) {
-			
+
 			array->pdata[i] = NULL;
-			
+
 		}
-        
+
         array->alloc = 2 * array->alloc;
-		
+
 	}
-	
+
 	array->pdata[array->len] = data;
-    
+
     array->len++;
-	
+
 }
 
 /*******************************************************************************
@@ -93,25 +93,25 @@ void g_ptr_array_add (GPtrArray *array, gpointer data) {
  *******************************************************************************/
 
 void g_ptr_array_remove_index_fast(GPtrArray *array, int index) {
-		
+
 	if (index == array->len - 1) {
-		
+
 		array->pdata[index] = NULL;
-		
+
 		array->len--;
-		
+
 	}
-		
+
 	if (index < array->len - 1) {
-		
+
 		array->pdata[index] = array->pdata[array->len-1];
-		
+
 		array->pdata[array->len-1] = NULL;
-		
+
 		array->len--;
-		
+
 	}
-	
+
 }
 
 /*******************************************************************************
@@ -119,15 +119,15 @@ void g_ptr_array_remove_index_fast(GPtrArray *array, int index) {
  *******************************************************************************/
 
 void g_ptr_array_remove_fast(GPtrArray *array, gpointer data) {
-	
+
 	for (int i = 0; i < array->len; i++) {
-		
+
 		if (array->pdata[i] == data) {
-			
+
 			g_ptr_array_remove_index_fast(array, i);
-			
+
 			break;
-			
+
 		}
     }
 }
@@ -137,15 +137,15 @@ void g_ptr_array_remove_fast(GPtrArray *array, gpointer data) {
  *******************************************************************************/
 
 void g_ptr_array_empty(GPtrArray *array) {
-    
+
     for (int i = 0; i < array->len; i++) {
-        
+
         array->pdata[i] = NULL;
-        
+
     }
-    
+
     array->len = 0;
-	
+
 }
 
 /*******************************************************************************
@@ -153,11 +153,11 @@ void g_ptr_array_empty(GPtrArray *array) {
  *******************************************************************************/
 
 void g_ptr_array_free(GPtrArray *array) {
-	
+
 	free(array->pdata);
-	
+
 	free(array);
-	
+
 }
 
 /*******************************************************************************
@@ -165,22 +165,22 @@ void g_ptr_array_free(GPtrArray *array) {
  *******************************************************************************/
 
 void g_ptr_array_shuffle(GPtrArray *array) {
-	
+
 	int i, j;
 	gpointer *temp;
-	
+
 	for ( i = array->len-1; i>=0; i--) {
-		
+
 		j = runif(0, i);
-		
+
 		temp = array->pdata[j];
-		
+
 		array->pdata[j] = array->pdata[i];
-		
+
 		array->pdata[i] = temp;
-		
+
 	}
-	
+
 }
 
 /*******************************************************************************
@@ -188,9 +188,9 @@ void g_ptr_array_shuffle(GPtrArray *array) {
  *******************************************************************************/
 
 double beta_shape(double mu, double sigma) {
-	
+
 	return( fmax2(0, ( pow(mu,2) - pow(mu,3) - mu*pow(sigma, 2) ) / pow(sigma,2)) );
-	
+
 }
 
 /*******************************************************************************
@@ -198,9 +198,9 @@ double beta_shape(double mu, double sigma) {
  *******************************************************************************/
 
 double beta_rate(double mu, double sigma) {
-	
+
 	return( fmax2(0, ( mu - 2*pow(mu,2) + pow(mu,3) - pow(sigma,2) + mu*pow(sigma, 2) ) / pow(sigma,2)) );
-	
+
 }
 
 /*******************************************************************************
@@ -208,15 +208,15 @@ double beta_rate(double mu, double sigma) {
  *******************************************************************************/
 
 double gamma_shape(double mu, double sigma) {
-	
+
 	double x = 0;
-	
+
 	if (sigma > 0) {
 		x = pow(mu,2) / pow(sigma,2);
 	}
-	
+
 	return(x);
-	
+
 }
 
 /*******************************************************************************
@@ -224,14 +224,14 @@ double gamma_shape(double mu, double sigma) {
  *******************************************************************************/
 
 double gamma_rate(double mu, double sigma) {
-	
+
 	double x = 0;
-	
+
 	if (sigma > 0) {
 		x = mu / pow(sigma,2);
 	}
-	
+
 	return(x);
-	
+
 }
 

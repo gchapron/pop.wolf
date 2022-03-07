@@ -57,7 +57,7 @@ project <- function(
 	)
 
 	results <- list()
-	results$runs <- aperm(`dim<-`(t(output$runs), list(stats, months, runs)), c(2, 1, 3))
+	results$runs <- aperm(`dim<-`(t(output$runs), c(stats, months, runs)), c(2, 1, 3))
 	results$individuals <- matrix(output$individuals, nrow=length(output$individuals)/5, ncol=5, byrow=T)
 
 	colnames(results$runs) <- c("pop_size",
