@@ -24,7 +24,10 @@ A string indicating which variable should be plotted (\code{"Packs"}, \code{"Pai
 Plot average projections with 95\% confidence interval.
 }
 
+\value{No returned value, plot created}
+
 \examples{
+oldpar <- par(mfrow = c(1,1))
 projection <- project(
 	years = 12,
 	runs = 100,
@@ -45,5 +48,6 @@ plot_projection(projection, "Packs")
 plot_projection(projection, "Pairs")
 plot_projection(projection, "Reproductions")
 plot_projection(projection, "Population")
+par(oldpar)
 }
 
